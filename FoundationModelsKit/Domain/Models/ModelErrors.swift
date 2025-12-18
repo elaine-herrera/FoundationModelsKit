@@ -6,15 +6,15 @@
 //
 import Foundation
 
-enum ModelError: Error, Equatable {
+public enum ModelError: Error, Equatable {
     case modelUnavailable
     case generationFailed(underlying: Error)
     
-    static func == (lhs: ModelError, rhs: ModelError) -> Bool {
+    public static func == (lhs: ModelError, rhs: ModelError) -> Bool {
         switch (lhs, rhs) {
-            case (.modelUnavailable, .modelUnavailable): return true
-            case (.generationFailed(let lhs), .generationFailed(let rhs)): return lhs as NSError == rhs as NSError
-            default: return false
+        case (.modelUnavailable, .modelUnavailable): return true
+        case (.generationFailed(let lhs), .generationFailed(let rhs)): return lhs as NSError == rhs as NSError
+        default: return false
         }
     }
 }

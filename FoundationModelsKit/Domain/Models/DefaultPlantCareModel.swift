@@ -6,7 +6,7 @@
 //
 import FoundationModels
 
-final class DefaultPlantCareModel: PlantCareModel {
+public final class DefaultPlantCareModel: PlantCareModel {
     let model: SystemLanguageModel
     
     let instructions = """
@@ -14,11 +14,11 @@ final class DefaultPlantCareModel: PlantCareModel {
     Consider horticulture best practices.
     """
     
-    init(model: SystemLanguageModel = .default) {
+    public init(model: SystemLanguageModel = .default) {
         self.model = model
     }
     
-    func generateWateringAdvice(for context: PlantCareContext) async throws -> WateringAdvice {
+    public func generateWateringAdvice(for context: PlantCareContext) async throws -> WateringAdvice {
         
         guard model.isAvailable else {
             throw ModelError.modelUnavailable

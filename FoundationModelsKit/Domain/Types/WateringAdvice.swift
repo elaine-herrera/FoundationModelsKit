@@ -7,10 +7,10 @@
 import FoundationModels
 
 @Generable
-struct WateringAdvice {
-    let wateringIntervalDays: Int
+public struct WateringAdvice {
+    public let wateringIntervalDays: Int
 
-    let reasoning: String
+    public let reasoning: String
 
-    let tips: [String]?
+    public let tips: [String]?
 }

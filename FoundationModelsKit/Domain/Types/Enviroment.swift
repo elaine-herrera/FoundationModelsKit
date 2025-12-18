@@ -8,20 +8,20 @@
 import FoundationModels
 
 @Generable
-enum PlantLocation {
+public enum PlantLocation {
     case indoor
     case outdoor
 }
 
 @Generable
-enum Temperature {
+public enum Temperature {
     case cold
     case mild
     case warm
 }
 
 @Generable
-enum Humidity {
+public enum Humidity {
     case dry
     case normal
     case humid
