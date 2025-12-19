@@ -7,7 +7,7 @@
 import FoundationModels
 
 public final class FoundationModelEngine: ModelEngine {
-    public let model: SystemLanguageModel
+    private let model: SystemLanguageModel
     
     public init(model: SystemLanguageModel = .default) {
         self.model = model
