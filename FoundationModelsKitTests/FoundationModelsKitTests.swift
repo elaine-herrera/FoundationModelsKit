@@ -71,6 +71,25 @@ struct FoundationModelsKitTests {
             try await model.generateWateringAdvice(for: context)
         }
     }
+    
+    @Test func testCorrectWateringAdviceWhenSuccessfulEngine() async {
+        let expectedWateringAdvice = WateringAdvice(
+            wateringIntervalDays: 14,
+            reasoning: "Orchids require moderate watering indoors.",
+            tips: ["Ensure proper drainage"]
+        )
+        
+        let model = DefaultPlantCareModel(
+            engine: MockSuccessfulEngine(expectedAdvice: expectedWateringAdvice)
+        )
+
+        let advice = try? await model.generateWateringAdvice(for: makePlantCareContext())
+
+        #expect(advice != nil)
+        #expect(advice!.wateringIntervalDays == 14)
+        #expect(advice!.reasoning == expectedWateringAdvice.reasoning)
+        #expect(advice!.tips == expectedWateringAdvice.tips)
+    }
 }
 
 extension FoundationModelsKitTests {
