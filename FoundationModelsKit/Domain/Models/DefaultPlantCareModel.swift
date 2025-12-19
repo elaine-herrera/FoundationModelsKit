@@ -7,26 +7,25 @@
 import FoundationModels
 
 public final class DefaultPlantCareModel: PlantCareModel {
-    let model: SystemLanguageModel
+    private let engine: ModelEngine
     
     let instructions = """
     Given the following plant care context, determine an appropriate watering schedule.
     Consider horticulture best practices.
     """
     
-    public init(model: SystemLanguageModel = .default) {
-        self.model = model
+    init(engine: ModelEngine = FoundationModelEngine()) {
+        self.engine = engine
     }
     
     public func generateWateringAdvice(for context: PlantCareContext) async throws -> WateringAdvice {
-        guard model.isAvailable else {
-            debugPrint(model.availability)
+        guard engine.isAvailable else {
+            debugPrint(engine.availability)
             throw ModelError.modelUnavailable
         }
         do {
-            let session = LanguageModelSession(model: model, instructions: instructions)
-            let response = try await session.respond(to: .init(context), generating: WateringAdvice.self)
-            return response.content
+            return try await engine.generate(instructions: instructions, input: context,
+                                             responseType: WateringAdvice.self)
         } catch {
             throw ModelError.generationFailed(underlying: error)
         }

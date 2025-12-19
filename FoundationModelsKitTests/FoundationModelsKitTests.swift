@@ -49,5 +49,22 @@ struct FoundationModelsKitTests {
         #expect(!advice.reasoning.isEmpty)
         #expect(advice.tips == ["Ensure proper drainage"])
     }
+    
+    @Test func testThrowsWhenModelUnavailable() async {
+        let model = DefaultPlantCareModel(
+            engine: UnavailableEngine()
+        )
+
+        let context = PlantCareContext(
+            plantName: "Orchid",
+            location: .indoor,
+            temperature: .warm,
+            humidity: .humid
+        )
+
+        await #expect(throws: ModelError.modelUnavailable) {
+            try await model.generateWateringAdvice(for: context)
+        }
+    }
 
 }
