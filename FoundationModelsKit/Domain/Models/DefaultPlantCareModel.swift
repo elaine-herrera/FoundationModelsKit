@@ -14,7 +14,7 @@ public final class DefaultPlantCareModel: PlantCareModel {
     Consider horticulture best practices.
     """
     
-    init(engine: ModelEngine = FoundationModelEngine()) {
+    public init(engine: ModelEngine = FoundationModelEngine()) {
         self.engine = engine
     }
     
