@@ -12,17 +12,11 @@ struct PlantContextInfo {
     var temperature: TemperatureInfo
     var humidity: HumidityInfo
     
-    init(name: String, location: PlantLocationInfo, temperature: TemperatureInfo, humidity: HumidityInfo) {
+    init(name: String, location: PlantLocationInfo = .indoor, temperature: TemperatureInfo = .cold,
+         humidity: HumidityInfo = .dry) {
         self.name = name
         self.location = location
         self.temperature = temperature
         self.humidity = humidity
-    }
-    
-    init(name: String) {
-        self.name = name
-        self.location = .indoor
-        self.temperature = .cold
-        self.humidity = .dry
     }
 }
