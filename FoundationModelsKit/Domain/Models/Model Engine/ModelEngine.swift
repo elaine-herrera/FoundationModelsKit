@@ -6,7 +6,7 @@
 //
 import FoundationModels
 
-protocol ModelEngine {
+public protocol ModelEngine {
     var isAvailable: Bool { get }
     
     var availability: SystemLanguageModel.Availability { get }
