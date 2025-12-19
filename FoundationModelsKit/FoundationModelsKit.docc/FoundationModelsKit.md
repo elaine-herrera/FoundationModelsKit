@@ -1,13 +1,29 @@
 # ``FoundationModelsKit``
 
-<!--@START_MENU_TOKEN@-->Summary<!--@END_MENU_TOKEN@-->
+A macOS framework for generating plant care guidance (watering frequency, reasoning, and tips) using a FoundationModels.
 
 ## Overview
 
-<!--@START_MENU_TOKEN@-->Text<!--@END_MENU_TOKEN@-->
+Given a plant name and basic environmental conditions (location, temperature, and humidity), ``FoundationModelsKit`` produces a structured ``WateringAdvice`` result. The framework separates the concerns of:
 
-## Topics
+- describing the plant and its environment (``PlantCareContext``),
+- invoking a foundation model (``FoundationModelEngine``), and
+- exposing a simple, high-level API (``DefaultPlantCareModel``).
 
-### <!--@START_MENU_TOKEN@-->Group<!--@END_MENU_TOKEN@-->
+## Quick start
 
-- <!--@START_MENU_TOKEN@-->``Symbol``<!--@END_MENU_TOKEN@-->
+```swift
+let context = PlantCareContext(
+    plantName: "Orchid",
+    location: .indoor,
+    temperature: .warm,
+    humidity: .humid
+)
+
+let model = DefaultPlantCareModel()
+let advice = try? await model.generateWateringAdvice(for: context)
+
+print(advice?.wateringIntervalDays) // e.g. 14
+print(advice?.reasoning)            // short explanation
+print(advice?.tips ?? [])           // optional tips
+
