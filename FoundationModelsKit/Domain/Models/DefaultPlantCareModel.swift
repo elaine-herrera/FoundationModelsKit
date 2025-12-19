@@ -19,24 +19,14 @@ public final class DefaultPlantCareModel: PlantCareModel {
     }
     
     public func generateWateringAdvice(for context: PlantCareContext) async throws -> WateringAdvice {
-        
         guard model.isAvailable else {
+            debugPrint(model.availability)
             throw ModelError.modelUnavailable
         }
-        
         do {
-            let session = LanguageModelSession(
-                model: model,
-                instructions: instructions
-            )
-            
-            let response = try await session.respond(
-                to: .init(context),
-                generating: WateringAdvice.self
-            )
-            
+            let session = LanguageModelSession(model: model, instructions: instructions)
+            let response = try await session.respond(to: .init(context), generating: WateringAdvice.self)
             return response.content
-            
         } catch {
             throw ModelError.generationFailed(underlying: error)
         }
