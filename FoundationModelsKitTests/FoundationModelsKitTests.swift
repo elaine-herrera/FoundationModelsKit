@@ -6,6 +6,7 @@
 //
 
 import Testing
+import Foundation
 @testable import FoundationModelsKit
 
 struct FoundationModelsKitTests {
@@ -67,4 +68,22 @@ struct FoundationModelsKitTests {
         }
     }
 
+    @Test func testThrowsWhenFailingEngine() async {
+        let expectedError = FailingEngineError.modelNotReady
+        
+        let model = DefaultPlantCareModel(
+            engine: FailingEngine(expectedError: expectedError)
+        )
+
+        let context = PlantCareContext(
+            plantName: "Orchid",
+            location: .indoor,
+            temperature: .warm,
+            humidity: .humid
+        )
+
+        await #expect(throws: ModelError.generationFailed(underlying: expectedError)) {
+            try await model.generateWateringAdvice(for: context)
+        }
+    }
 }
