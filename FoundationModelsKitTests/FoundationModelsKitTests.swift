@@ -37,12 +37,7 @@ struct FoundationModelsKitTests {
             tips: ["Ensure proper drainage"]
         )
 
-        let context = PlantCareContext(
-            plantName: "Orchid",
-            location: .indoor,
-            temperature: .warm,
-            humidity: .humid
-        )
+        let context = makePlantCareContext()
 
         let advice = try await mockModel.generateWateringAdvice(for: context)
         
@@ -56,12 +51,7 @@ struct FoundationModelsKitTests {
             engine: UnavailableEngine()
         )
 
-        let context = PlantCareContext(
-            plantName: "Orchid",
-            location: .indoor,
-            temperature: .warm,
-            humidity: .humid
-        )
+        let context = makePlantCareContext()
 
         await #expect(throws: ModelError.modelUnavailable) {
             try await model.generateWateringAdvice(for: context)
@@ -75,15 +65,22 @@ struct FoundationModelsKitTests {
             engine: FailingEngine(expectedError: expectedError)
         )
 
-        let context = PlantCareContext(
+        let context = makePlantCareContext()
+
+        await #expect(throws: ModelError.generationFailed(underlying: expectedError)) {
+            try await model.generateWateringAdvice(for: context)
+        }
+    }
+}
+
+extension FoundationModelsKitTests {
+    
+    func makePlantCareContext() -> PlantCareContext {
+        PlantCareContext(
             plantName: "Orchid",
             location: .indoor,
             temperature: .warm,
             humidity: .humid
         )
-
-        await #expect(throws: ModelError.generationFailed(underlying: expectedError)) {
-            try await model.generateWateringAdvice(for: context)
-        }
     }
 }
