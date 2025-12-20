@@ -7,7 +7,7 @@
 import FoundationModels
 
 @Generable
-public struct WateringAdvice {
+public struct WateringAdvice: Equatable {
     public let wateringIntervalDays: Int
 
     public let reasoning: String
