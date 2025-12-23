@@ -13,8 +13,8 @@ struct FoundationModelsKitTests {
     // This test verifies domain rules.
     // 1- wateringIntervalDays should always be between 0-90
     // 2- reasoning is not empty
-    @Test func testWateringAdviceSatisfiesDomainRules() {
-        let advice = WateringAdvice(
+    @Test func testWateringAdviceSatisfiesDomainRules() throws {
+        let advice = try WateringAdvice(
             wateringIntervalDays: 14,
             reasoning: "Some explanation",
             tips: nil
@@ -24,13 +24,25 @@ struct FoundationModelsKitTests {
         #expect(advice.wateringIntervalDays <= 90)
         #expect(!advice.reasoning.isEmpty)
     }
+    
+    @Test func testWateringAdviceRejectsZeroDays() {
+        #expect(throws: ValidationError.self) {
+            try WateringAdvice(wateringIntervalDays: 0, reasoning: "Invalid interval", tips: nil)
+        }
+    }
+
+    @Test func testWateringAdviceRejectsMoreThanNinetyDays() {
+        #expect(throws: ValidationError.self) {
+            try WateringAdvice(wateringIntervalDays: 91, reasoning: "Invalid interval", tips: nil)
+        }
+    }
 
 
     // This test verifies that the PlantCareModel consumer
     // correctly receives structured advice from a mocked model.
     @Test func testReturnsStubbedWateringAdviceForIndoorOrchid() async throws {
         let mockModel = MockPlantCareModel()
-        mockModel.stubbedAdvice = WateringAdvice(
+        mockModel.stubbedAdvice = try WateringAdvice(
             wateringIntervalDays: 14,
             reasoning: "Orchids require moderate watering indoors.",
             tips: ["Ensure proper drainage"]
@@ -71,8 +83,8 @@ struct FoundationModelsKitTests {
         }
     }
     
-    @Test func testCorrectWateringAdviceWhenSuccessfulEngine() async {
-        let expectedWateringAdvice = WateringAdvice(
+    @Test func testCorrectWateringAdviceWhenSuccessfulEngine() async throws {
+        let expectedWateringAdvice = try WateringAdvice(
             wateringIntervalDays: 14,
             reasoning: "Orchids require moderate watering indoors.",
             tips: ["Ensure proper drainage"]
