@@ -15,9 +15,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F3FBC2012EF426C900A0B9F3"
-               BuildableName = "PlantCareApp.app"
-               BlueprintName = "PlantCareApp"
+               BlueprintIdentifier = "F3BAE4CB2EF4217D00AD9CE5"
+               BuildableName = "FoundationModelsKit.framework"
+               BlueprintName = "FoundationModelsKit"
                ReferencedContainer = "container:FoundationModelsKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -29,6 +29,19 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
       shouldAutocreateTestPlan = "YES">
+      <Testables>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "F3BAE4D62EF4217D00AD9CE5"
+               BuildableName = "FoundationModelsKitTests.xctest"
+               BlueprintName = "FoundationModelsKitTests"
+               ReferencedContainer = "container:FoundationModelsKit.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -40,16 +53,6 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F3FBC2012EF426C900A0B9F3"
-            BuildableName = "PlantCareApp.app"
-            BlueprintName = "PlantCareApp"
-            ReferencedContainer = "container:FoundationModelsKit.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -57,16 +60,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F3FBC2012EF426C900A0B9F3"
-            BuildableName = "PlantCareApp.app"
-            BlueprintName = "PlantCareApp"
+            BlueprintIdentifier = "F3BAE4CB2EF4217D00AD9CE5"
+            BuildableName = "FoundationModelsKit.framework"
+            BlueprintName = "FoundationModelsKit"
             ReferencedContainer = "container:FoundationModelsKit.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
