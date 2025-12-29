@@ -1,5 +1,7 @@
 # FoundationModelsKit
 
+[![CI](https://github.com/elaine-herrera/FoundationModelsKit/actions/workflows/CI.yml/badge.svg)](https://github.com/elaine-herrera/FoundationModelsKit/actions/workflows/CI.yml)
+
 A macOS framework for generating plant care guidance (watering frequency, reasoning, and tips) using a FoundationModels.
 
 ## Overview
@@ -26,3 +28,4 @@ let advice = try? await model.generateWateringAdvice(for: context)
 print(advice?.wateringIntervalDays) // e.g. 14
 print(advice?.reasoning)            // short explanation
 print(advice?.tips ?? [])           // optional tips
+```
