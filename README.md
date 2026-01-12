@@ -29,3 +29,7 @@ print(advice?.wateringIntervalDays) // e.g. 14
 print(advice?.reasoning)            // short explanation
 print(advice?.tips ?? [])           // optional tips
 ```
+
+### Example macOS application
+
+<img src=".github/images/PlantCare.png" alt="PlantCare macOS application" width="600">
