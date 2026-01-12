@@ -14,7 +14,7 @@ public struct PlantCareContext {
     public let temperature: Temperature
 
     public let humidity: Humidity
-    
+
     public init(
         plantName: String,
         location: PlantLocation,

@@ -8,7 +8,7 @@ import Foundation
 public enum ModelError: Error, Equatable {
     case modelUnavailable
     case generationFailed(underlying: Error)
-    
+
     public static func == (lhs: ModelError, rhs: ModelError) -> Bool {
         switch (lhs, rhs) {
         case (.modelUnavailable, .modelUnavailable): return true

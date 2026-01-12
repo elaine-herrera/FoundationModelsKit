@@ -8,11 +8,11 @@ import FoundationModels
 
 final class UnavailableEngine: ModelEngine {
     var isAvailable: Bool { false }
-    
+
     var availability: SystemLanguageModel.Availability {
         .unavailable(.appleIntelligenceNotEnabled)
     }
-    
+
     func generate<Response: Generable>(instructions: String, input: some Generable,
                                        responseType: Response.Type) async throws -> Response {
         fatalError("Should not be called")

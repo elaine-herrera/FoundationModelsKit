@@ -24,7 +24,7 @@ struct FoundationModelsKitTests {
         #expect(advice.wateringIntervalDays <= 90)
         #expect(!advice.reasoning.isEmpty)
     }
-    
+
     @Test func testWateringAdviceRejectsZeroDays() {
         #expect(throws: ValidationError.self) {
             try WateringAdvice(wateringIntervalDays: 0, reasoning: "Invalid interval", tips: nil)
@@ -36,7 +36,6 @@ struct FoundationModelsKitTests {
             try WateringAdvice(wateringIntervalDays: 91, reasoning: "Invalid interval", tips: nil)
         }
     }
-
 
     // This test verifies that the PlantCareModel consumer
     // correctly receives structured advice from a mocked model.
@@ -51,12 +50,12 @@ struct FoundationModelsKitTests {
         let context = makePlantCareContext()
 
         let advice = try await mockModel.generateWateringAdvice(for: context)
-        
+
         #expect(advice.wateringIntervalDays == 14)
         #expect(!advice.reasoning.isEmpty)
         #expect(advice.tips == ["Ensure proper drainage"])
     }
-    
+
     @Test func testThrowsWhenModelUnavailable() async {
         let model = DefaultPlantCareModel(
             engine: UnavailableEngine()
@@ -71,7 +70,7 @@ struct FoundationModelsKitTests {
 
     @Test func testThrowsWhenFailingEngine() async {
         let expectedError = FailingEngineError.modelNotReady
-        
+
         let model = DefaultPlantCareModel(
             engine: FailingEngine(expectedError: expectedError)
         )
@@ -82,14 +81,14 @@ struct FoundationModelsKitTests {
             try await model.generateWateringAdvice(for: context)
         }
     }
-    
+
     @Test func testCorrectWateringAdviceWhenSuccessfulEngine() async throws {
         let expectedWateringAdvice = try WateringAdvice(
             wateringIntervalDays: 14,
             reasoning: "Orchids require moderate watering indoors.",
             tips: ["Ensure proper drainage"]
         )
-        
+
         let model = DefaultPlantCareModel(
             engine: MockSuccessfulEngine(expectedAdvice: expectedWateringAdvice)
         )
@@ -104,7 +103,7 @@ struct FoundationModelsKitTests {
 }
 
 extension FoundationModelsKitTests {
-    
+
     func makePlantCareContext() -> PlantCareContext {
         PlantCareContext(
             plantName: "Orchid",

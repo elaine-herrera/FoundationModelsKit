@@ -7,16 +7,16 @@ import FoundationModels
 
 public final class DefaultPlantCareModel: PlantCareModel {
     private let engine: ModelEngine
-    
+
     private let instructions = """
     Given the following plant care context, determine an appropriate watering schedule.
     Consider horticulture best practices.
     """
-    
+
     public init(engine: ModelEngine = FoundationModelEngine()) {
         self.engine = engine
     }
-    
+
     public func generateWateringAdvice(for context: PlantCareContext) async throws -> WateringAdvice {
         guard engine.isAvailable else {
             debugPrint(engine.availability)

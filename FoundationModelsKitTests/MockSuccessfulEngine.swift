@@ -8,20 +8,22 @@ import FoundationModels
 
 final class MockSuccessfulEngine: ModelEngine {
     var isAvailable: Bool { true }
-    
+
     private let expectedAdvice: WateringAdvice
-    
+
     init (expectedAdvice: WateringAdvice) {
         self.expectedAdvice = expectedAdvice
     }
-    
+
     var availability: SystemLanguageModel.Availability {
         .available
     }
-    
+
     func generate<Response: Generable>(instructions: String, input: some Generable,
                                        responseType: Response.Type) async throws -> Response {
-        expectedAdvice as! Response
+        guard let response = expectedAdvice as? Response else {
+            fatalError("Mock configured with wrong type. Expected \(Response.self)")
+        }
+        return response
     }
 }
-

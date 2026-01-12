@@ -12,17 +12,17 @@ enum FailingEngineError: Error {
 
 final class FailingEngine: ModelEngine {
     var isAvailable: Bool { true }
-    
+
     private let expectedError: FailingEngineError
-    
+
     init (expectedError: FailingEngineError) {
         self.expectedError = expectedError
     }
-    
+
     var availability: SystemLanguageModel.Availability {
         .unavailable(.modelNotReady)
     }
-    
+
     func generate<Response: Generable>(instructions: String, input: some Generable,
                                        responseType: Response.Type) async throws -> Response {
         throw expectedError

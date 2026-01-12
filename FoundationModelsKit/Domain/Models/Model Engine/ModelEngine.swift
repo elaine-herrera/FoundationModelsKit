@@ -7,10 +7,9 @@ import FoundationModels
 
 public protocol ModelEngine {
     var isAvailable: Bool { get }
-    
+
     var availability: SystemLanguageModel.Availability { get }
-    
+
     func generate<Response: Generable>(instructions: String, input: some Generable,
                                        responseType: Response.Type) async throws -> Response
 }
-

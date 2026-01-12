@@ -10,11 +10,11 @@ import FoundationModelsKit
 enum PlantLocationInfo: CaseIterable, Identifiable {
     case indoor
     case outdoor
-    
+
     public var id: Self { self }
-    
+
     public var title: String { "\(self)".capitalized }
-    
+
     // Map to the framework enum
     public var modelValue: PlantLocation {
         switch self {
@@ -28,11 +28,11 @@ enum TemperatureInfo: CaseIterable, Identifiable {
     case cold
     case mild
     case warm
-    
+
     public var id: Self { self }
-    
+
     public var title: String { "\(self)".capitalized }
-    
+
     // Map to the framework enum
     public var modelValue: Temperature {
         switch self {
@@ -47,11 +47,11 @@ enum HumidityInfo: CaseIterable, Identifiable {
     case dry
     case normal
     case humid
-    
+
     public var id: Self { self }
-    
+
     public var title: String { "\(self)".capitalized }
-    
+
     // Map to the framework enum
     public var modelValue: Humidity {
         switch self {

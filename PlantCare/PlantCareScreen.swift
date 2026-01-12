@@ -16,7 +16,7 @@ struct PlantCareScreen: View {
             VStack(spacing: 0) {
                 // Header Section
                 headerSection
-                
+
                 // Input Form Section
                 VStack(spacing: 20) {
                     plantNameField
@@ -30,7 +30,7 @@ struct PlantCareScreen: View {
                 .shadow(color: Color.black.opacity(0.05), radius: 10, x: 0, y: 4)
                 .padding(.horizontal, 24)
                 .padding(.bottom, 24)
-                
+
                 // Results Section
                 if response != .idle {
                     resultsSection
@@ -53,9 +53,9 @@ struct PlantCareScreen: View {
             )
         )
     }
-    
+
     // MARK: - Header Section
-    
+
     private var headerSection: some View {
         VStack(spacing: 8) {
             Image(systemName: "leaf.fill")
@@ -68,11 +68,11 @@ struct PlantCareScreen: View {
                     )
                 )
                 .shadow(color: Color.green.opacity(0.3), radius: 8, x: 0, y: 4)
-            
+
             Text("Plant Care Advisor")
                 .font(.system(size: 32, weight: .bold, design: .rounded))
                 .foregroundColor(.primary)
-            
+
             Text("Get personalized watering recommendations")
                 .font(.subheadline)
                 .foregroundColor(.secondary)
@@ -80,15 +80,15 @@ struct PlantCareScreen: View {
         .padding(.top, 32)
         .padding(.bottom, 24)
     }
-    
+
     // MARK: - Input Fields
-    
+
     private var plantNameField: some View {
         VStack(alignment: .leading, spacing: 8) {
             Label("Plant Name", systemImage: "textformat")
                 .font(.headline)
                 .foregroundColor(.secondary)
-            
+
             TextField("e.g., Monstera, Cactus, Peace Lily", text: $plant.name)
                 .textFieldStyle(.plain)
                 .padding(12)
@@ -100,13 +100,13 @@ struct PlantCareScreen: View {
                 )
         }
     }
-    
+
     private var locationPicker: some View {
         VStack(alignment: .center, spacing: 8) {
             Label("Location", systemImage: "location.fill")
                 .font(.headline)
                 .foregroundColor(.secondary)
-            
+
             Picker("", selection: $plant.location) {
                 ForEach(PlantLocationInfo.allCases) { value in
                     Label(value.title, systemImage: value.icon)
@@ -116,7 +116,7 @@ struct PlantCareScreen: View {
             .pickerStyle(.segmented)
         }
     }
-    
+
     private var environmentSection: some View {
         VStack(alignment: .center, spacing: 16) {
             customPicker(
@@ -125,7 +125,7 @@ struct PlantCareScreen: View {
                 selection: $plant.temperature,
                 options: TemperatureInfo.allCases
             )
-            
+
             customPicker(
                 title: "Humidity",
                 icon: "humidity.fill",
@@ -134,7 +134,7 @@ struct PlantCareScreen: View {
             )
         }
     }
-    
+
     private func customPicker<T: Hashable & CaseIterable & Identifiable>(
         title: String,
         icon: String,
@@ -145,7 +145,7 @@ struct PlantCareScreen: View {
             Label(title, systemImage: icon)
                 .font(.headline)
                 .foregroundColor(.secondary)
-            
+
             Picker("", selection: selection) {
                 ForEach(options) { value in
                     Text(value.title).tag(value)
@@ -154,7 +154,7 @@ struct PlantCareScreen: View {
             .pickerStyle(.segmented)
         }
     }
-    
+
     private var generateButton: some View {
         Button {
             withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
@@ -180,9 +180,9 @@ struct PlantCareScreen: View {
         .controlSize(.large)
         .disabled(plant.name.isEmpty)
     }
-    
+
     // MARK: - Results Section
-    
+
     private var resultsSection: some View {
         VStack(alignment: .leading, spacing: 0) {
             content
@@ -201,7 +201,7 @@ struct PlantCareScreen: View {
         switch response {
         case .idle:
             EmptyView()
-            
+
         case .loading:
             HStack(spacing: 16) {
                 ProgressView()
@@ -246,7 +246,7 @@ struct PlantCareScreen: View {
                                 endPoint: .bottomTrailing
                             )
                         )
-                    
+
                     VStack(alignment: .leading, spacing: 4) {
                         Text("Water every")
                             .font(.subheadline)
@@ -265,13 +265,13 @@ struct PlantCareScreen: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .background(Color.blue.opacity(0.08))
                 .cornerRadius(12)
-                
+
                 // Reasoning
                 VStack(alignment: .leading, spacing: 8) {
                     Label("Reasoning", systemImage: "lightbulb.fill")
                         .font(.headline)
                         .foregroundColor(.secondary)
-                    
+
                     Text(advice.reasoning)
                         .font(.body)
                         .foregroundColor(.primary)
@@ -288,7 +288,7 @@ struct PlantCareScreen: View {
                         Label("Care Tips", systemImage: "star.fill")
                             .font(.headline)
                             .foregroundColor(.secondary)
-                        
+
                         VStack(alignment: .leading, spacing: 8) {
                             ForEach(Array(tips.enumerated()), id: \.offset) { index, tip in
                                 HStack(alignment: .top, spacing: 12) {
@@ -310,13 +310,13 @@ struct PlantCareScreen: View {
             }
         }
     }
-    
+
     private func errorCard(icon: String, title: String, message: String, color: Color) -> some View {
         HStack(alignment: .top, spacing: 16) {
             Image(systemName: icon)
                 .font(.system(size: 32))
                 .foregroundColor(color)
-            
+
             VStack(alignment: .leading, spacing: 4) {
                 Text(title)
                     .font(.headline)
@@ -335,7 +335,7 @@ struct PlantCareScreen: View {
 
     private func getWateringAdvice() async -> WateringAdviceState {
         let model = DefaultPlantCareModel()
-        
+
         let context = PlantCareContext(plantName: plant.name,
                                        location: plant.location.modelValue,
                                        temperature: plant.temperature.modelValue,
