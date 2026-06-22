@@ -60,11 +60,8 @@ struct FoundationModelsKitTests {
         let model = DefaultPlantCareModel(
             engine: UnavailableEngine()
         )
-
-        let context = makePlantCareContext()
-
         await #expect(throws: ModelError.modelUnavailable) {
-            try await model.generateWateringAdvice(for: context)
+            try await model.generateWateringAdvice(for: makePlantCareContext())
         }
     }
 
@@ -74,11 +71,8 @@ struct FoundationModelsKitTests {
         let model = DefaultPlantCareModel(
             engine: FailingEngine(expectedError: expectedError)
         )
-
-        let context = makePlantCareContext()
-
         await #expect(throws: ModelError.generationFailed(underlying: expectedError)) {
-            try await model.generateWateringAdvice(for: context)
+            try await model.generateWateringAdvice(for: makePlantCareContext())
         }
     }
 
