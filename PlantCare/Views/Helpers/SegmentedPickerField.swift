@@ -27,6 +27,7 @@ struct SegmentedPickerField<T: Hashable & Identifiable, RowContent: View>: View 
                 }
             }
             .pickerStyle(.segmented)
+            .tint(.accentColor)
         }
     }
 }

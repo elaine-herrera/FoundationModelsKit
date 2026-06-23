@@ -13,12 +13,12 @@ struct PlantCareHeaderView: View {
                 .font(.system(size: 48))
                 .foregroundStyle(
                     LinearGradient(
-                        colors: [.green, Color.green.opacity(0.7)],
+                        colors: [.accentColor, Color.accentColor.opacity(0.7)],
                         startPoint: .topLeading,
                         endPoint: .bottomTrailing
                     )
                 )
-                .shadow(color: Color.green.opacity(0.3), radius: 8, x: 0, y: 4)
+                .shadow(color: Color.accentColor.opacity(0.3), radius: 8, x: 0, y: 4)
 
             Text("Plant Care Advisor")
                 .font(.system(size: 32, weight: .bold, design: .rounded))
