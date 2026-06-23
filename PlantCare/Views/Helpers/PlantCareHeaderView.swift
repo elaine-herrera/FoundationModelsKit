@@ -28,7 +28,6 @@ struct PlantCareHeaderView: View {
                 .font(.subheadline)
                 .foregroundColor(.secondary)
         }
-        .padding(.top, 32)
-        .padding(.bottom, 24)
+        .padding(24)
     }
 }
