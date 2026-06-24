@@ -8,7 +8,7 @@ import Foundation
 import FoundationModelsKit
 import Combine
 
-enum PlantAutocompleteState {
+enum PlantAutocompleteState: Equatable {
     case idle
     case loading
     case error(errorMessage: String)

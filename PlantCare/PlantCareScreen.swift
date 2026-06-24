@@ -18,7 +18,7 @@ struct PlantCareScreen: View {
                     PlantCareHeaderView()
 
                     SectionCard {
-                        VStack(spacing: 24) {
+                        VStack(spacing: 36) {
                             SearchPlantView(viewModel: plantAutoCompleteViewModel) { species in
                                 viewModel.plant.name = species.displayName
                                 Task { await viewModel.generate() }
@@ -60,7 +60,6 @@ struct PlantCareScreen: View {
                             )
                         }
                     }
-                    .padding(.vertical, 24)
 
                     if viewModel.response != .idle {
                         unsafe resultsSection

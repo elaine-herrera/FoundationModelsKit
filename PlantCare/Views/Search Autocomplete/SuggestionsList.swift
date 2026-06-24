@@ -12,31 +12,33 @@ struct SuggestionsList: View {
     let onSelect: (GBIFSpecies) -> Void
 
     var body: some View {
-        LazyVStack(spacing: 0) {
-            ForEach(suggestions) { species in
-                Button {
-                    onSelect(species)
-                } label: {
-                    VStack(alignment: .leading, spacing: 2) {
-                        Text(species.displayName)
-                            .font(.body)
-                            .italic()
-                            .foregroundStyle(.primary)
+        ScrollView {
+            LazyVStack(spacing: 0) {
+                ForEach(suggestions) { species in
+                    Button {
+                        onSelect(species)
+                    } label: {
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text(species.displayName)
+                                .font(.body)
+                                .italic()
+                                .foregroundStyle(.primary)
 
-                        if !species.subtitle.isEmpty {
-                            Text(species.subtitle)
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
+                            if !species.subtitle.isEmpty {
+                                Text(species.subtitle)
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
                         }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.vertical, 8)
+                        .padding(.horizontal, 10)
                     }
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.vertical, 8)
-                    .padding(.horizontal, 10)
-                }
-                .buttonStyle(.plain)
+                    .buttonStyle(.plain)
 
-                if species.id != suggestions.last?.id {
-                    Divider()
+                    if species.id != suggestions.last?.id {
+                        Divider()
+                    }
                 }
             }
         }

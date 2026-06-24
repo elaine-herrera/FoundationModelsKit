@@ -66,7 +66,7 @@ public struct SearchPlantView: View {
                     debugPrint(species)
                     viewModel.select(species)
                     onSelect?(species)
-                }
+                }.frame(maxHeight: 250)
             case .empty:
                 EmptyView()
             }
