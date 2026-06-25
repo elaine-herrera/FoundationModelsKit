@@ -49,27 +49,6 @@
 		F3FBC24D2EF4334600A0B9F3 /* PlantCare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlantCare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		F3A82BF72FE978E70073B93C /* Exceptions for "PlantCare" folder in "FoundationModelsKit" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				"Services/GBI Search Service/GBIFPlantSearchService.swift",
-				"Services/GBI Search Service/GBIFSpeciesSearchResponse.swift",
-				Services/PlantSearchService.swift,
-			);
-			target = F3BAE4CB2EF4217D00AD9CE5 /* FoundationModelsKit */;
-		};
-		F3A82BF82FE978E70073B93C /* Exceptions for "PlantCare" folder in "PlantCare" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				"Services/GBI Search Service/GBIFPlantSearchService.swift",
-				"Services/GBI Search Service/GBIFSpeciesSearchResponse.swift",
-				Services/PlantSearchService.swift,
-			);
-			target = F3FBC24C2EF4334600A0B9F3 /* PlantCare */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		F3BAE4CE2EF4217D00AD9CE5 /* FoundationModelsKit */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
@@ -83,10 +62,6 @@
 		};
 		F3FBC24E2EF4334600A0B9F3 /* PlantCare */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				F3A82BF72FE978E70073B93C /* Exceptions for "PlantCare" folder in "FoundationModelsKit" target */,
-				F3A82BF82FE978E70073B93C /* Exceptions for "PlantCare" folder in "PlantCare" target */,
-			);
 			path = PlantCare;
 			sourceTree = "<group>";
 		};
