@@ -9,9 +9,9 @@ import FoundationModelsKit
 
 public struct SearchPlantView: View {
     @StateObject var viewModel: PlantAutocompleteViewModel
-    public var onSelect: ((GBIFSpecies) -> Void)?
+    public var onSelect: ((String) -> Void)?
 
-    init(viewModel: PlantAutocompleteViewModel, onSelect: ((GBIFSpecies) -> Void)? = nil) {
+    init(viewModel: PlantAutocompleteViewModel, onSelect: ((String) -> Void)? = nil) {
         _viewModel = StateObject(wrappedValue: viewModel)
         self.onSelect = onSelect
     }
@@ -38,13 +38,17 @@ public struct SearchPlantView: View {
                     }
                     .buttonStyle(.plain)
                 }
-            }.padding(12)
-                .background(Color(nsColor: .textBackgroundColor))
-                .cornerRadius(8)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 8)
-                        .stroke(Color.accentColor.opacity(0.3), lineWidth: 1)
-                )
+            }
+            .padding(12)
+            .background(Color(nsColor: .textBackgroundColor))
+            .cornerRadius(8)
+            .overlay(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(Color.accentColor.opacity(0.3), lineWidth: 1)
+            ).onSubmit {
+                viewModel.cancel()
+                onSelect?(viewModel.query)
+            }
 
             switch viewModel.state {
             case .idle:
@@ -65,7 +69,7 @@ public struct SearchPlantView: View {
                 SuggestionsList(suggestions: suggestions) { species in
                     debugPrint(species)
                     viewModel.select(species)
-                    onSelect?(species)
+                    onSelect?(species.displayName)
                 }.frame(maxHeight: 250)
             case .empty:
                 EmptyView()

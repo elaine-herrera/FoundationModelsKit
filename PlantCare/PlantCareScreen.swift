@@ -20,7 +20,7 @@ struct PlantCareScreen: View {
                     SectionCard {
                         VStack(spacing: 36) {
                             SearchPlantView(viewModel: plantAutoCompleteViewModel) { species in
-                                viewModel.plant.name = species.displayName
+                                viewModel.plant.name = species
                                 Task { await viewModel.generate() }
                             }
 

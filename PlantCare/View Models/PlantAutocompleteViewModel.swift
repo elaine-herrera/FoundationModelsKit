@@ -113,4 +113,10 @@ final class PlantAutocompleteViewModel: ObservableObject {
         state = .idle
         query = ""
     }
+
+    func cancel() {
+        searchTask?.cancel()
+        searchTask = nil
+        state = .idle
+    }
 }
