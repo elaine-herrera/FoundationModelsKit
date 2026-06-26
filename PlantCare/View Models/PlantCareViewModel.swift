@@ -12,7 +12,11 @@ import FoundationModelsKit
 final class PlantCareViewModel: ObservableObject {
 
     @Published var response: WateringAdviceState = .idle
-    @Published var plant: PlantContextInfo = .init(name: "Cactus")
+    @Published var plant: PlantContextInfo = .init(name: "")
+
+    var isDisabled: Bool {
+        response == .loading || plant.name.isEmpty
+    }
 
     func generate() async {
         withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {

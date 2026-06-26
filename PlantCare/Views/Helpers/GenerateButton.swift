@@ -22,7 +22,7 @@ struct GenerateButton: View {
             .padding(.vertical, 12)
         }
         .buttonStyle(.borderedProminent)
-        .tint(.green)
+        .tint(.accentColor)
         .controlSize(.large)
         .disabled(isDisabled)
     }

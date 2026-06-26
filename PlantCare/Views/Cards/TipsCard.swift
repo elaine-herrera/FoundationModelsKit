@@ -20,7 +20,7 @@ struct TipsCard: View {
                 ForEach(Array(tips.enumerated()), id: \.offset) { index, tip in
                     HStack(alignment: .top, spacing: 12) {
                         Image(systemName: "\(index + 1).circle.fill")
-                            .foregroundColor(.green)
+                            .foregroundColor(.accentColor)
                             .font(.title3)
 
                         Text(tip)
@@ -32,7 +32,7 @@ struct TipsCard: View {
         }
         .padding(16)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(Color.green.opacity(0.08))
+        .background(Color.accentColor.opacity(0.08))
         .cornerRadius(12)
     }
 }

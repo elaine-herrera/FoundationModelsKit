@@ -7,10 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F3A82BE82FE93F540073B93C /* FoundationModelsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3BAE4CC2EF4217D00AD9CE5 /* FoundationModelsKit.framework */; };
+		F3A82BE92FE93F540073B93C /* FoundationModelsKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F3BAE4CC2EF4217D00AD9CE5 /* FoundationModelsKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F3BAE4D82EF4217D00AD9CE5 /* FoundationModelsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3BAE4CC2EF4217D00AD9CE5 /* FoundationModelsKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		F3A82BEA2FE93F540073B93C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F3BAE4C32EF4217D00AD9CE5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F3BAE4CB2EF4217D00AD9CE5;
+			remoteInfo = FoundationModelsKit;
+		};
 		F3BAE4D92EF4217D00AD9CE5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F3BAE4C32EF4217D00AD9CE5 /* Project object */;
@@ -19,6 +28,20 @@
 			remoteInfo = FoundationModelsKit;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F3A82BEC2FE93F540073B93C /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F3A82BE92FE93F540073B93C /* FoundationModelsKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		F3BAE4CC2EF4217D00AD9CE5 /* FoundationModelsKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FoundationModelsKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,18 +87,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3A82BE82FE93F540073B93C /* FoundationModelsKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F3A82BE72FE93F540073B93C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F3BAE4C22EF4217D00AD9CE5 = {
 			isa = PBXGroup;
 			children = (
 				F3BAE4CE2EF4217D00AD9CE5 /* FoundationModelsKit */,
 				F3BAE4DB2EF4217D00AD9CE5 /* FoundationModelsKitTests */,
 				F3FBC24E2EF4334600A0B9F3 /* PlantCare */,
+				F3A82BE72FE93F540073B93C /* Frameworks */,
 				F3BAE4CD2EF4217D00AD9CE5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -159,10 +191,12 @@
 				F3FBC2492EF4334600A0B9F3 /* Sources */,
 				F3FBC24A2EF4334600A0B9F3 /* Frameworks */,
 				F3FBC24B2EF4334600A0B9F3 /* Resources */,
+				F3A82BEC2FE93F540073B93C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				F3A82BEB2FE93F540073B93C /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				F3FBC24E2EF4334600A0B9F3 /* PlantCare */,
@@ -325,6 +359,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		F3A82BEB2FE93F540073B93C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F3BAE4CB2EF4217D00AD9CE5 /* FoundationModelsKit */;
+			targetProxy = F3A82BEA2FE93F540073B93C /* PBXContainerItemProxy */;
+		};
 		F3BAE4DA2EF4217D00AD9CE5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F3BAE4CB2EF4217D00AD9CE5 /* FoundationModelsKit */;
@@ -613,7 +652,17 @@
 				DEVELOPMENT_TEAM = 2ZDG6KHLGZ;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_BLUETOOTH = NO;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PRINTING = NO;
+				ENABLE_RESOURCE_ACCESS_USB = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -647,7 +696,17 @@
 				DEVELOPMENT_TEAM = 2ZDG6KHLGZ;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_BLUETOOTH = NO;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PRINTING = NO;
+				ENABLE_RESOURCE_ACCESS_USB = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;

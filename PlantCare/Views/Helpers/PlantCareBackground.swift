@@ -11,7 +11,7 @@ struct PlantCareBackground: View {
         LinearGradient(
             colors: [
                 Color(nsColor: .windowBackgroundColor),
-                Color.green.opacity(0.03)
+                Color.accentColor.opacity(0.03)
             ],
             startPoint: .top,
             endPoint: .bottom
