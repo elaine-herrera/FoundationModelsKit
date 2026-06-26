@@ -21,7 +21,6 @@ struct PlantCareScreen: View {
                         VStack(spacing: 36) {
                             SearchPlantView(viewModel: plantAutoCompleteViewModel) { species in
                                 viewModel.plant.name = species
-                                Task { await viewModel.generate() }
                             }
 
                             HStack {
@@ -52,9 +51,8 @@ struct PlantCareScreen: View {
                             }
 
                             GenerateButton(
-                                isDisabled: plantAutoCompleteViewModel.query.isEmpty,
+                                isDisabled: viewModel.isDisabled,
                                 action: {
-                                    viewModel.plant.name = plantAutoCompleteViewModel.query
                                     Task { await viewModel.generate() }
                                 }
                             )

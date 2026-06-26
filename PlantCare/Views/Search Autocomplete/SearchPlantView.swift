@@ -20,7 +20,7 @@ public struct SearchPlantView: View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
                 TextField(
-                    "Search botanical name (e.g. Quercus alba)",
+                    "Search botanical name (e.g. Phalaenopsis aphrodite)",
                     text: Binding(
                         get: { viewModel.query },
                         set: { viewModel.updateQuery($0) }
@@ -32,7 +32,7 @@ public struct SearchPlantView: View {
                 .textFieldStyle(.plain)
 
                 if !viewModel.query.isEmpty {
-                    Button(action: viewModel.clear) {
+                    Button(action: clear ) {
                         Image(systemName: "xmark.circle.fill")
                             .foregroundStyle(.secondary)
                     }
@@ -51,7 +51,7 @@ public struct SearchPlantView: View {
             }
 
             switch viewModel.state {
-            case .idle:
+            case .idle, .empty:
                 EmptyView()
             case .loading:
                 HStack(spacing: 6) {
@@ -67,13 +67,15 @@ public struct SearchPlantView: View {
                     .foregroundStyle(.red)
             case .loaded(let suggestions):
                 SuggestionsList(suggestions: suggestions) { species in
-                    debugPrint(species)
                     viewModel.select(species)
                     onSelect?(species.displayName)
                 }.frame(maxHeight: 250)
-            case .empty:
-                EmptyView()
             }
         }
+    }
+
+    private func clear() {
+        viewModel.clear()
+        onSelect?("")
     }
 }
