@@ -57,7 +57,7 @@ struct PlantCareScreen: View {
                                 }
                             )
                         }
-                    }
+                    }.padding(.horizontal, 24)
 
                     if viewModel.response != .idle {
                         unsafe resultsSection

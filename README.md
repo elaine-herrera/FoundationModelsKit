@@ -12,6 +12,19 @@ Given a plant name and basic environmental conditions (location, temperature, an
 - invoking a foundation model (``FoundationModelEngine``), and
 - exposing a simple, high-level API (``DefaultPlantCareModel``).
 
+The `FoundationModelEngine` uses a `WikipediaTool` to gather specific plant information at runtime. The model decides when and how often to call the tool.
+
+```swift
+let model: SystemLanguageModel
+// ...
+
+let session = LanguageModelSession(
+    model: model,  
+    tools: [WikipediaTool()],
+    instructions: instructions
+)
+```
+
 ## Quick start
 
 ```swift
@@ -33,3 +46,6 @@ print(advice?.tips ?? [])           // optional tips
 ### Example macOS application
 
 <img src=".github/images/PlantCare.png" alt="PlantCare macOS application" width="600">
+
+<img src=".github/images/PlantCareResult.png" alt="PlantCare macOS application" width="600">
+
