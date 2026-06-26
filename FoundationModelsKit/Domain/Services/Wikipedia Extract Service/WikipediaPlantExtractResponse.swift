@@ -18,8 +18,8 @@ struct WikipediaQuery: Codable {
 }
 
 struct WikipediaPage: Codable {
-    let pageid: Int
+    let pageid: Int?
     let ns: Int
     let title: String
-    let extract: String
+    let extract: String?
 }

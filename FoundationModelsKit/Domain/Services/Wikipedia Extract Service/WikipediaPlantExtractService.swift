@@ -57,4 +57,4 @@ public final class WikipediaPlantExtractService: PlantExtractService {
 
         return decoded.extracts
     }
-    }
+}
