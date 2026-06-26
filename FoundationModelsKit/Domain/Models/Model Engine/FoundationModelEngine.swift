@@ -22,7 +22,9 @@ public final class FoundationModelEngine: ModelEngine {
 
     public func generate<Response: Generable>(instructions: String, input: some Generable,
                                               responseType: Response.Type) async throws -> Response {
-        let session = LanguageModelSession(model: model, instructions: instructions)
+        let session = LanguageModelSession(model: model,
+                                           tools: [WikipediaTool()],
+                                           instructions: instructions)
         let response = try await session.respond(to: .init(input), generating: responseType)
         return response.content
     }
