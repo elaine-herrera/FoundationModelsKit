@@ -11,6 +11,9 @@ public final class DefaultPlantCareModel: PlantCareModel {
     private let instructions = """
     Given the following plant care context, determine an appropriate watering schedule.
     Consider horticulture best practices.
+    Here is an example of the desired format for a Phalaenopsis orchid, but don't copy its content:
+    Plant context: \(PlantCareContext.examplePhalaenopsis)
+    WateringAdvice: \(WateringAdvice.examplePhalaenopsis)
     """
 
     public init(engine: ModelEngine = FoundationModelEngine()) {
