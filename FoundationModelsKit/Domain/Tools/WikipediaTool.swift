@@ -11,6 +11,7 @@ import Foundation
 struct WikipediaTool: Tool {
     let name = "findWikipediaExtract"
     let description = "Finds a wikipedia extract for a plant"
+    let extractService: any PlantExtractService
 
     @Generable
     struct Arguments {
@@ -20,12 +21,17 @@ struct WikipediaTool: Tool {
 
     @Generable
     struct Output: Codable {
-        @Guide(description: "The wikipedia extracts with plant information")
+        @Guide(description: "The Wikipedia extracts containing information about the plant")
         let extracts: [String]
     }
 
+    @MainActor
+    init(extractService: PlantExtractService = WikipediaPlantExtractService()) {
+        self.extractService = extractService
+    }
+
     func call(arguments: Arguments) async throws -> Output {
-        let response = try await WikipediaPlantExtractService().search(arguments.plantName)
+        let response = try await extractService.search(arguments.plantName)
         return Output(extracts: response)
     }
 }
