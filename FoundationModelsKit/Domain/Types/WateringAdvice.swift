@@ -7,10 +7,13 @@ import FoundationModels
 
 @Generable
 public struct WateringAdvice: Equatable, Sendable {
+    @Guide(description: "Days between thorough waterings", .range(1...90))
     public let wateringIntervalDays: Int
 
+    @Guide(description: "2–4 sentences explaining the interval using concrete factors")
     public let reasoning: String
 
+    @Guide(description: "Actionable tips", .maximumCount(5))
     public let tips: [String]?
 
     public init(wateringIntervalDays: Int, reasoning: String, tips: [String]? = nil) throws {
